@@ -40,3 +40,19 @@ song.set('title', 'Harry Potter');
 
 console.log('is Song valid ? ' + song.isValid());
 console.log('error: ' + song.validationError);
+
+const Animal = Backbone.Model.extend({
+  walk: function() {
+    console.log('Animal walking...');
+  }
+});
+
+const Dog = Animal.extend({
+  walk: function() {
+    Animal.prototype.walk.apply(this);
+    console.log('Dog is walking');
+  }
+});
+const dog = new Dog();
+dog.walk();
+
