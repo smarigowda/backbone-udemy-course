@@ -6,6 +6,9 @@
 const Song = Backbone.Model.extend({
   initialize: function() {
     console.log('A new song has been created.');
+  },
+  defaults: {
+    genre: 'Jazz'
   }
 });
 
@@ -20,3 +23,5 @@ const song = new Song({
 //   artist: "Miles Davis",
 //   publishYear: 1989
 // });
+
+console.log(song.toJSON());
