@@ -9,10 +9,14 @@ const Song = Backbone.Model.extend({
   }
 });
 
-const song = new Song();
-
-song.set("title", "Blue in Green");
-song.set({
-  artist: "Miles Davis",
+const song = new Song({
+  title: "Black is Orange",
+  artist: "Miles",
   publishYear: 1989
 });
+
+// song.set("title", "Blue in Green");
+// song.set({
+//   artist: "Miles Davis",
+//   publishYear: 1989
+// });
