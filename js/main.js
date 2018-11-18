@@ -10,3 +10,9 @@ const Song = Backbone.Model.extend({
 });
 
 const song = new Song();
+
+song.set("title", "Blue in Green");
+song.set({
+  artist: "Miles Davis",
+  publishYear: 1989
+});
