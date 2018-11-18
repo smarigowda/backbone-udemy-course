@@ -9,14 +9,19 @@ const Song = Backbone.Model.extend({
   },
   defaults: {
     genre: 'Jazz'
+  },
+  validate: function(attrs) {
+    if(!attrs.title) {
+      return 'title is required';
+    }
   }
 });
 
-const song = new Song({
-  title: "Black is Orange",
-  artist: "Miles",
-  publishYear: 1989
-});
+// const song = new Song({
+//   title: "Black is Orange",
+//   artist: "Miles",
+//   publishYear: 1989
+// });
 
 // song.set("title", "Blue in Green");
 // song.set({
@@ -24,4 +29,14 @@ const song = new Song({
 //   publishYear: 1989
 // });
 
-console.log(song.toJSON());
+// console.log(song.toJSON());
+
+const song = new Song();
+
+console.log('is Song valid ? ' + song.isValid());
+console.log('error: ' + song.validationError);
+
+song.set('title', 'Harry Potter');
+
+console.log('is Song valid ? ' + song.isValid());
+console.log('error: ' + song.validationError);
