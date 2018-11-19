@@ -34,6 +34,13 @@ const filteredSongs = songs.filter(function(song) {
 })
 
 console.log('Songs with downloads > 100', filteredSongs)
+
+songs.each(song => {
+  console.log(song.get('title'));
+})
+
+
+
 // const song1 = songs.at(0);
 // console.log(song1);
 
