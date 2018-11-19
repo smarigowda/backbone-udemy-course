@@ -14,7 +14,14 @@ songs.add(new Song({ title: 'Song 4' }), { at: 0 });
 console.log(songs);
 
 songs.push(new Song({ title: 'Song 5', genre: 'Classic' }));
+songs.push(new Song({ title: 'Song 6', genre: 'Classic' }));
 console.log(songs);
+
+const classicSongs = songs.where({ genre: 'Classic' });
+console.log('--- all Classic songs: ', classicSongs);
+
+const firstClassicSong = songs.findWhere({ genre: 'Classic' });
+console.log('--- first Classic song: ', firstClassicSong);
 
 // const song1 = songs.at(0);
 // console.log(song1);
