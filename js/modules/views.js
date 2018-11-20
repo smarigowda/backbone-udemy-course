@@ -5,8 +5,14 @@ const Songs = Backbone.Collection.extend({
 
 const SongView = Backbone.View.extend({
   tagName: 'li',
+  events: {
+    'click': 'clickHandler'
+  },
+  clickHandler() {
+    console.log('Listen button clicked...');
+  },
   render: function() {
-    this.$el.html(this.model.get('title'));
+    this.$el.html(this.model.get('title') + '<button>Listen</button>');
     return this;
   }
 });
