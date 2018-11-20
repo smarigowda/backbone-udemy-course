@@ -24,3 +24,25 @@ const car = new Car({registrationNumber: 'CE12ZMY'});
 
 car.start();
 
+const Cars = Backbone.Collection.extend({
+  model: Car
+});
+
+
+const cars = new Cars([
+  { registrationNumber: 'XL1887', color: 'Silver' },
+  { registrationNumber: 'XL6756', color: 'Blue' },
+  { registrationNumber: 'XL9834', color: 'Silver' },
+]);
+
+const blueCars = cars.where({ color: 'Blue' });
+console.log('blueCars ', blueCars);
+
+cars.remove(cars.at(0)); // mutates cars model
+
+const jsonObject = cars.toJSON();
+console.log('jsonObject', jsonObject);
+
+cars.forEach(d => {
+  console.log(d.get('registrationNumber'));
+})
