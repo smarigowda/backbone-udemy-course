@@ -6,14 +6,15 @@ const Songs = Backbone.Collection.extend({
 const SongView = Backbone.View.extend({
   tagName: 'li',
   events: {
-    'click .listen': 'clickHandler',
+    'click': 'clickHandler',
     'click .bookmark': 'onClickBookmark'
   },
   clickHandler() {
     console.log('Listen button clicked...');
   },
 
-  onClickBookmark() {
+  onClickBookmark(e) {
+    e.stopPropagation();
     console.log('bookmark clicked');
   },
 
