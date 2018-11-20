@@ -12,7 +12,7 @@ const SongView = Backbone.View.extend({
     console.log('Listen button clicked...');
   },
   render: function() {
-    this.$el.html(this.model.get('title') + '<button>Listen</button>');
+    this.$el.html(this.model.get('title') + '<button>Listen</button><button class="bookmark">Bookmark</button>');
     return this;
   }
 });
