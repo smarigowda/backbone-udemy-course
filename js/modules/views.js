@@ -13,6 +13,5 @@ const SongView = Backbone.View.extend({
 
 // const songView = new SongView({ el: '#container' });
 const songView = new SongView();
-songView.render();
 
-$('#container').html(songView.$el);
+$('#container').html(songView.render().$el);
