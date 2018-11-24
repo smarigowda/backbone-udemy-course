@@ -26,12 +26,16 @@ const SongView = Backbone.View.extend({
 
 const SongsView = Backbone.View.extend({
   initialize: function() {
-    this.model.on('add', this.onSongAdded, this)
+    this.model.on('add', this.onSongAdded, this);
+    this.model.on('remove', this.onSongRemoved, this);
   },
   onSongAdded: function(song) {
     console.log('song added...');
     const songView = new SongView({ model: song });
     this.$el.append(songView.render().$el);
+  },
+  onSongRemoved: function() {
+    console.log('song removed...');
   },
   render: function() {
     this.model.each(song => {
