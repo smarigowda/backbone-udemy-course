@@ -19,8 +19,13 @@ const SongView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(this.model.get('title'));
-    this.$el.attr('id', this.model.id);
+    // this.$el.html(this.model.get('title'));
+    // this.$el.attr('id', this.model.id);
+    const template = _.template($("#songTemplate").html())
+    // const template = _.template("<h1>Hello Backbone js...<h1>")
+    // console.log(this.model);
+    const html = template(this.model.toJSON());
+    this.$el.html(html);
     return this;
   }
 });
@@ -47,7 +52,6 @@ const SongsView = Backbone.View.extend({
   }
 });
 
-
 const songs = new Songs([
   new Song({ id: 1, title: 'Blue is Green' }),
   new Song({ id: 2, title: 'Green is Yellow' }),
@@ -56,8 +60,6 @@ const songs = new Songs([
 
 const songsView = new SongsView({ el: '#container', model: songs });
 songsView.render();
-
-
 
 // const song = new Song({ title: 'Blue in Green' });
 
