@@ -19,7 +19,8 @@ const SongView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.html(this.model.get('title') + '<button class="listen">Listen</button><button class="bookmark">Bookmark</button>');
+    this.$el.html(this.model.get('title'));
+    this.$el.attr('id', this.model.id);
     return this;
   }
 });
@@ -34,8 +35,9 @@ const SongsView = Backbone.View.extend({
     const songView = new SongView({ model: song });
     this.$el.append(songView.render().$el);
   },
-  onSongRemoved: function() {
+  onSongRemoved: function(song) {
     console.log('song removed...');
+    this.$el.find('li#'+song.id).remove();
   },
   render: function() {
     this.model.each(song => {
@@ -47,9 +49,9 @@ const SongsView = Backbone.View.extend({
 
 
 const songs = new Songs([
-  new Song({ title: 'Blue is Green' }),
-  new Song({ title: 'Green is Yellow' }),
-  new Song({ title: 'All Yellow' }),
+  new Song({ id: 1, title: 'Blue is Green' }),
+  new Song({ id: 2, title: 'Green is Yellow' }),
+  new Song({ id: 3, title: 'All Yellow' }),
 ])
 
 const songsView = new SongsView({ el: '#container', model: songs });
