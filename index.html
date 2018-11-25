@@ -15,6 +15,9 @@
         <script id="songTemplate" type="text/template">
             <%= title %>
             <button>Listen</button>
+            <% if (plays > 500 ) { %>
+                <span class="plays">Most Pupular</span>
+            <% } %>
         </script>
     </head>
     <body>

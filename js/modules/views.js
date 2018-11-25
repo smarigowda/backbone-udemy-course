@@ -53,9 +53,9 @@ const SongsView = Backbone.View.extend({
 });
 
 const songs = new Songs([
-  new Song({ id: 1, title: 'Blue is Green' }),
-  new Song({ id: 2, title: 'Green is Yellow' }),
-  new Song({ id: 3, title: 'All Yellow' }),
+  new Song({ id: 1, title: 'Blue is Green', plays: 100 }),
+  new Song({ id: 2, title: 'Green is Yellow', plays: 200 }),
+  new Song({ id: 3, title: 'All Yellow', plays: 1000 }),
 ])
 
 const songsView = new SongsView({ el: '#container', model: songs });
