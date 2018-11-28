@@ -14,4 +14,6 @@ person.on('walking', function(e) {
   console.log('walking event triggered...', e);
 })
 
+person.off('walking');
+
 person.walk();
