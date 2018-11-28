@@ -10,10 +10,9 @@ const person = {
 
 _.extend(person, Backbone.Events);
 
-person.on('walking', function(e) {
+person.once('walking', function(e) {
   console.log('walking event triggered...', e);
 })
 
-person.off('walking');
-
+person.walk();
 person.walk();
