@@ -28,13 +28,10 @@ var VenuesView = Backbone.View.extend({
 	id: "venues",
 
 	render: function(){
-		var self = this;
-
-		this.model.each(function(venue){
+		this.model.each(venue => {
 			var view = new VenueView({ model: venue });
-			self.$el.append(view.render().$el);
+			this.$el.append(view.render().$el);
 		});
-
 		return this;
 	}
 });
