@@ -1,58 +1,64 @@
 
-// In the first few sections, we do all the coding here.
-// Later, you'll see how to organize your code into separate
-// files and modules.
+var Venue = Backbone.Model.extend();
 
-const Song = Backbone.Model.extend({
-  initialize: function() {
-    console.log('A new song has been created.');
-  },
-  defaults: {
-    genre: 'Jazz'
-  },
-  validate: function(attrs) {
-    if(!attrs.title) {
-      return 'title is required';
-    }
-  }
+var Venues = Backbone.Collection.extend({
+	model: Venue
 });
 
-// const song = new Song({
-//   title: "Black is Orange",
-//   artist: "Miles",
-//   publishYear: 1989
-// });
+var VenueView = Backbone.View.extend({
+	tagName: "li",
 
-// song.set("title", "Blue in Green");
-// song.set({
-//   artist: "Miles Davis",
-//   publishYear: 1989
-// });
+	events: {
+		"click": "onClick",
+	},
 
-// console.log(song.toJSON());
+	onClick: function(){
+	},
 
-const song = new Song();
+	render: function(){
+		this.$el.html(this.model.get("name"));
 
-console.log('is Song valid ? ' + song.isValid());
-console.log('error: ' + song.validationError);
-
-song.set('title', 'Harry Potter');
-
-console.log('is Song valid ? ' + song.isValid());
-console.log('error: ' + song.validationError);
-
-const Animal = Backbone.Model.extend({
-  walk: function() {
-    console.log('Animal walking...');
-  }
+		return this;
+	}
 });
 
-const Dog = Animal.extend({
-  walk: function() {
-    Animal.prototype.walk.apply(this);
-    console.log('Dog is walking');
-  }
+var VenuesView = Backbone.View.extend({
+	tagName: "ul",
+
+	id: "venues",
+
+	render: function(){
+		var self = this;
+
+		this.model.each(function(venue){
+			var view = new VenueView({ model: venue });
+			self.$el.append(view.render().$el);
+		});
+
+		return this;
+	}
 });
-const dog = new Dog();
-dog.walk();
+
+var MapView = Backbone.View.extend({
+	el: "#map-container",
+
+	render: function(){
+		if (this.model)
+			this.$("#venue-name").html(this.model.get("name"));
+
+		return this;
+	}
+})
+
+var venues = new Venues([
+	new Venue({ name: "30 Mill Espresso" }),
+	new Venue({ name: "Platform Espresso" }),
+	new Venue({ name: "Mr Foxx" })
+	]);
+
+var venuesView = new VenuesView({ model: venues});
+$("#venues-container").html(venuesView.render().$el);
+
+var mapView = new MapView();
+mapView.render();
 

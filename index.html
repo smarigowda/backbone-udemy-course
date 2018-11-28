@@ -12,24 +12,17 @@
         <link rel="stylesheet" href="css/styles.css">
 
         <script src="js/lib/modernizr-2.6.2.min.js"></script>
-        <script id="songTemplate" type="text/template">
-            <%= title %>
-            <button>Listen</button>
-            <% if (plays > 500 ) { %>
-                <span class="plays">Most Pupular</span>
-            <% } %>
-        </script>
     </head>
     <body>
-        <ul id="container"></ul>
-        <script src="js/lib/jquery-min.js"></script>
-        <script src="js/lib/underscore-min.js"></script>
-        <script src="js/lib/backbone-min.js"></script>
-        <!-- <script src="js/main.js"></script> -->
-        <!-- <script src="js/exercises/models.js"></script> -->
-        <!-- <script src="js/modules/collection.js"></script> -->
-        <!-- <script src="js/modules/views.js"></script> -->
-        <!-- <script src="js/modules/model_event.js"></script> -->
-        <script src="js/modules/events.js"></script>
+        <div id="container">
+            <div id="venues-container"></div>
+            <div id="map-container">
+                <span id="venue-name"></span>
+            </div>
+        </div>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
